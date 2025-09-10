@@ -2263,58 +2263,44 @@
        
 
         // Initialize EmailJS with your Public Key
-        (function () {
-            // Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
-            emailjs.init("Yhuwx3QWFqNd4WL24");
-        })();
+      (function () {
+    // Initialize EmailJS
+    emailjs.init("Yhuwx3QWFqNd4WL24");
+})();
 
-        // Your existing JavaScript code remains
+document.getElementById('portfolioContactForm').addEventListener('submit', function (event) {
+    event.preventDefault();
 
-        // Add form submission handling
-        document.getElementById('portfolioContactForm').addEventListener('submit', function (event) {
-            event.preventDefault();
+    // Show loading
+    document.getElementById('form-loading').style.display = 'block';
+    document.getElementById('form-success').style.display = 'none';
+    document.getElementById('form-error').style.display = 'none';
 
-            // Show loading notification
-            document.getElementById('form-loading').style.display = 'block';
-            document.getElementById('form-success').style.display = 'none';
-            document.getElementById('form-error').style.display = 'none';
+    // Collect form data directly
+    emailjs.sendForm('service_s40kzem', 'template_29al16e', this, 'Yhuwx3QWFqNd4WL24')
+        .then(function (response) {
+            console.log('SUCCESS!', response.status, response.text);
 
-            // Get form data
-            const formData = {
-                from_name: document.getElementById('name').value,
-                from_email: document.getElementById('email').value,
-                message: document.getElementById('message').value
-            };
+            document.getElementById('form-loading').style.display = 'none';
+            document.getElementById('form-success').style.display = 'block';
 
-            // Send email using EmailJS
-            emailjs.send('service_s40kzem', 'template_29al16e', formData)
-                .then(function (response) {
-                    console.log('SUCCESS!', response.status, response.text);
+            document.getElementById('portfolioContactForm').reset();
 
-                    // Show success message
-                    document.getElementById('form-loading').style.display = 'none';
-                    document.getElementById('form-success').style.display = 'block';
+            setTimeout(function () {
+                document.getElementById('form-success').style.display = 'none';
+            }, 5000);
+        }, function (error) {
+            console.log('FAILED...', error);
 
-                    // Reset form
-                    document.getElementById('portfolioContactForm').reset();
+            document.getElementById('form-loading').style.display = 'none';
+            document.getElementById('form-error').style.display = 'block';
 
-                    // Hide success message after 5 seconds
-                    setTimeout(function () {
-                        document.getElementById('form-success').style.display = 'none';
-                    }, 5000);
-                }, function (error) {
-                    console.log('FAILED...', error);
-
-                    // Show error message
-                    document.getElementById('form-loading').style.display = 'none';
-                    document.getElementById('form-error').style.display = 'block';
-
-                    // Hide error message after 5 seconds
-                    setTimeout(function () {
-                        document.getElementById('form-error').style.display = 'none';
-                    }, 5000);
-                });
+            setTimeout(function () {
+                document.getElementById('form-error').style.display = 'none';
+            }, 5000);
         });
+});
+
 
     </script>
 </body>
