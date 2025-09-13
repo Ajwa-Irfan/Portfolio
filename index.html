@@ -1920,52 +1920,52 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Let's Talk</h3>
-                    <p><i class="fas fa-envelope"></i> ajwairfan44@gmail.com</p>
-                    <p><i class="fas fa-phone"></i> +92 3270944224</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Rahim Yar Khan, Pakistan</p>
+   <!-- Contact Section -->
+<section id="contact">
+    <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Let's Talk</h3>
+                <p><i class="fas fa-envelope"></i> ajwairfan44@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +92 3270944224</p>
+                <p><i class="fas fa-map-marker-alt"></i> Rahim Yar Khan, Pakistan</p>
+            </div>
+            <div class="contact-form">
+                <!-- Notification messages -->
+                <div id="form-success" class="form-notification form-success" style="display: none;">
+                    <i class="fas fa-check-circle"></i> Your message has been sent successfully!
                 </div>
-                <div class="contact-form">
-                    <!-- Add notification divs -->
-                    <div id="form-success" class="form-notification form-success">
-                        <i class="fas fa-check-circle"></i> Your message has been sent successfully!
-                    </div>
-                    <div id="form-error" class="form-notification form-error">
-                        <i class="fas fa-exclamation-circle"></i> There was an error sending your message. Please try
-                        again.
-                    </div>
-                    <div id="form-loading" class="form-notification form-loading">
-                        <i class="fas fa-spinner fa-spin"></i> Sending your message...
-                    </div>
+                <div id="form-error" class="form-notification form-error" style="display: none;">
+                    <i class="fas fa-exclamation-circle"></i> There was an error sending your message. Please try again.
+                </div>
+                <div id="form-loading" class="form-notification form-loading" style="display: none;">
+                    <i class="fas fa-spinner fa-spin"></i> Sending your message...
+                </div>
 
-                    <form id="portfolioContactForm">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="from_name" class="form-control"
-                                placeholder="Enter your name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Your Email</label>
-                            <input type="email" id="email" name="from_email" class="form-control"
-                                placeholder="Enter your email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Your Message</label>
-                            <textarea id="message" name="message" class="form-control"
-                                placeholder="Type your message here..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Send Message</button>
-                    </form>
-                </div>
+                <form id="portfolioContactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="from_name" class="form-control"
+                            placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="from_email" class="form-control"
+                            placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" class="form-control"
+                            placeholder="Type your message here..." required></textarea>
+                    </div>
+                    <input type="hidden" name="to_email" value="ajwairfan44@gmail.com">
+                    <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+                </form>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer>
@@ -2263,44 +2263,49 @@
        
 
         // Initialize EmailJS with your Public Key
-     (function () {
-    // Initialize EmailJS
+  // Initialize EmailJS
+(function () {
     emailjs.init("Yhuwx3QWFqNd4WL24");
 })();
 
+// Form submission handling
 document.getElementById('portfolioContactForm').addEventListener('submit', function (event) {
     event.preventDefault();
 
-    // Show loading
+    // Show loading, hide other messages
     document.getElementById('form-loading').style.display = 'block';
     document.getElementById('form-success').style.display = 'none';
     document.getElementById('form-error').style.display = 'none';
 
-    // Collect form data directly - REMOVE THE API KEY PARAMETER
+    // Send email using EmailJS
     emailjs.sendForm('service_s40kzem', 'template_29al16e', this)
         .then(function (response) {
             console.log('SUCCESS!', response.status, response.text);
-
+            
+            // Show success message
             document.getElementById('form-loading').style.display = 'none';
             document.getElementById('form-success').style.display = 'block';
-
+            
+            // Reset form
             document.getElementById('portfolioContactForm').reset();
-
+            
+            // Hide success message after 5 seconds
             setTimeout(function () {
                 document.getElementById('form-success').style.display = 'none';
             }, 5000);
         }, function (error) {
             console.log('FAILED...', error);
-
+            
+            // Show error message
             document.getElementById('form-loading').style.display = 'none';
             document.getElementById('form-error').style.display = 'block';
-
+            
+            // Hide error message after 5 seconds
             setTimeout(function () {
                 document.getElementById('form-error').style.display = 'none';
             }, 5000);
         });
 });
-
 
     </script>
 </body>
