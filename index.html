@@ -2263,7 +2263,7 @@
        
 
         // Initialize EmailJS with your Public Key
-      (function () {
+     (function () {
     // Initialize EmailJS
     emailjs.init("Yhuwx3QWFqNd4WL24");
 })();
@@ -2276,8 +2276,8 @@ document.getElementById('portfolioContactForm').addEventListener('submit', funct
     document.getElementById('form-success').style.display = 'none';
     document.getElementById('form-error').style.display = 'none';
 
-    // Collect form data directly
-    emailjs.sendForm('service_s40kzem', 'template_29al16e', this, 'Yhuwx3QWFqNd4WL24')
+    // Collect form data directly - REMOVE THE API KEY PARAMETER
+    emailjs.sendForm('service_s40kzem', 'template_29al16e', this)
         .then(function (response) {
             console.log('SUCCESS!', response.status, response.text);
 
