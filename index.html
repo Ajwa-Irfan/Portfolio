@@ -2245,26 +2245,6 @@
             setTimeout(typeTerminal, 2000);
         });
 
-        // Form submission handling
-        document.getElementById('portfolioContactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Show loading state
-            document.getElementById('form-loading').style.display = 'block';
-            document.getElementById('form-success').style.display = 'none';
-            document.getElementById('form-error').style.display = 'none';
-            
-            // Simulate form submission (replace with actual form submission code)
-            setTimeout(function() {
-                document.getElementById('form-loading').style.display = 'none';
-                document.getElementById('form-success').style.display = 'block';
-                
-                // Reset form
-                document.getElementById('portfolioContactForm').reset();
-            }, 2000);
-        });
-
-        // Initialize particles.js
        
 // Initialize EmailJS with your Public Key
 (function() {
@@ -2281,7 +2261,7 @@ document.getElementById('portfolioContactForm').addEventListener('submit', funct
     document.getElementById('form-error').style.display = 'none';
 
     // Send email using EmailJS
-    emailjs.sendForm('service_s40kzem', 'template_29al16e', this)
+    emailjs.sendForm('service_ym23bu8', 'template_29al16e', this)
         .then(function(response) {
             console.log('SUCCESS!', response.status, response.text);
             
