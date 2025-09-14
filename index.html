@@ -1920,7 +1920,7 @@
         </div>
     </section>
 
-   <!-- Contact Section -->
+  <!-- Contact Section -->
 <section id="contact">
     <div class="container">
         <h2 class="section-title">Get In Touch</h2>
@@ -1943,25 +1943,30 @@
                     <i class="fas fa-spinner fa-spin"></i> Sending your message...
                 </div>
 
-                <form id="portfolioContactForm">
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="from_name" class="form-control"
-                            placeholder="Enter your name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Your Email</label>
-                        <input type="email" id="email" name="from_email" class="form-control"
-                            placeholder="Enter your email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Your Message</label>
-                        <textarea id="message" name="message" class="form-control"
-                            placeholder="Type your message here..." required></textarea>
-                    </div>
-                    <input type="hidden" name="to_email" value="ajwairfan44@gmail.com">
-                    <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Send Message</button>
-                </form>
+<form id="portfolioContactForm">
+    <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" class="form-control"
+            placeholder="Enter your name" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" class="form-control"
+            placeholder="Enter your email" required>
+    </div>
+    <div class="form-group">
+        <label for="title">Subject</label>
+        <input type="text" id="title" name="title" class="form-control"
+            placeholder="Enter subject" required>
+    </div>
+    <div class="form-group">
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" class="form-control"
+            placeholder="Type your message here..." required></textarea>
+    </div>
+    <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+</form>
+
             </div>
         </div>
     </div>
@@ -2261,15 +2266,13 @@
 
         // Initialize particles.js
        
-
-        // Initialize EmailJS with your Public Key
-  // Initialize EmailJS
-(function () {
-    emailjs.init("Yhuwx3QWFqNd4WL24");
+// Initialize EmailJS with your Public Key
+(function() {
+    emailjs.init("Yhuwx3QWFqNd4WL24"); // Your public key
 })();
 
 // Form submission handling
-document.getElementById('portfolioContactForm').addEventListener('submit', function (event) {
+document.getElementById('portfolioContactForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
     // Show loading, hide other messages
@@ -2279,7 +2282,7 @@ document.getElementById('portfolioContactForm').addEventListener('submit', funct
 
     // Send email using EmailJS
     emailjs.sendForm('service_s40kzem', 'template_29al16e', this)
-        .then(function (response) {
+        .then(function(response) {
             console.log('SUCCESS!', response.status, response.text);
             
             // Show success message
@@ -2290,10 +2293,10 @@ document.getElementById('portfolioContactForm').addEventListener('submit', funct
             document.getElementById('portfolioContactForm').reset();
             
             // Hide success message after 5 seconds
-            setTimeout(function () {
+            setTimeout(function() {
                 document.getElementById('form-success').style.display = 'none';
             }, 5000);
-        }, function (error) {
+        }, function(error) {
             console.log('FAILED...', error);
             
             // Show error message
@@ -2301,7 +2304,7 @@ document.getElementById('portfolioContactForm').addEventListener('submit', funct
             document.getElementById('form-error').style.display = 'block';
             
             // Hide error message after 5 seconds
-            setTimeout(function () {
+            setTimeout(function() {
                 document.getElementById('form-error').style.display = 'none';
             }, 5000);
         });
