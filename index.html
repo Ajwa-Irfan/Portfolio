@@ -2245,51 +2245,6 @@
             setTimeout(typeTerminal, 2000);
         });
 
-       
-// Initialize EmailJS with your Public Key
-(function() {
-    emailjs.init("Yhuwx3QWFqNd4WL24"); // Your public key
-})();
-
-// Form submission handling
-document.getElementById('portfolioContactForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    // Show loading, hide other messages
-    document.getElementById('form-loading').style.display = 'block';
-    document.getElementById('form-success').style.display = 'none';
-    document.getElementById('form-error').style.display = 'none';
-
-    // Send email using EmailJS
-    emailjs.sendForm('service_ym23bu8', 'template_29al16e', this)
-        .then(function(response) {
-            console.log('SUCCESS!', response.status, response.text);
-            
-            // Show success message
-            document.getElementById('form-loading').style.display = 'none';
-            document.getElementById('form-success').style.display = 'block';
-            
-            // Reset form
-            document.getElementById('portfolioContactForm').reset();
-            
-            // Hide success message after 5 seconds
-            setTimeout(function() {
-                document.getElementById('form-success').style.display = 'none';
-            }, 5000);
-        }, function(error) {
-            console.log('FAILED...', error);
-            
-            // Show error message
-            document.getElementById('form-loading').style.display = 'none';
-            document.getElementById('form-error').style.display = 'block';
-            
-            // Hide error message after 5 seconds
-            setTimeout(function() {
-                document.getElementById('form-error').style.display = 'none';
-            }, 5000);
-        });
-});
-
     </script>
 </body>
 
